@@ -23,10 +23,6 @@ python -c "import secrets; print('NEW_ENC:', secrets.token_hex(16).upper()); pri
 ```bash
 python get_install_parameters.py \
   --buffer-mem 2048 \
-  --max-ram-scratch 2048 \
-  --max-rk-rp-length 128 \
-  --max-cred-blob-len 128 \
-  --large-blob-store-size 2048 \
   --cache-pin-token \
   --protect-against-reset
 
@@ -37,10 +33,6 @@ python get_install_parameters.py \
 | 參數 | 設定值 | 功能解析 |
 | --- | --- | --- |
 | `--buffer-mem` | `2048` | **最核心關鍵**。將 RAM 緩衝區由預設 1024 調大至 2048，徹底解決微軟發送超大 WebAuthn 請求封包時引發的 `REQUEST_TOO_LARGE` 錯誤。 |
-| `--max-ram-scratch` | `2048` | 將運算暫存區（Working Memory）調大至 2048 位元組。J3R180 具備充裕的 RAM（約 8KB+），調大可加速運算並大幅降低 Flash 寫入損耗。 |
-| `--max-rk-rp-length` | `128` | 將網站識別碼（RP ID）最大長度由預設 32 擴增至 128 位元組，避免登入長網域（如 Azure / Entra ID 租用戶子網域）時截斷或溢位。 |
-| `--max-cred-blob-len` | `128` | 將每個憑證附加的 Blob 資料上限由 32 提高至 128 位元組，相容更多擴充資料。 |
-| `--large-blob-store-size` | `2048` | 將 Large Blob 空間由 1024 調大至 2048 位元組，提供充裕的延伸功能儲存空間。 |
 | `--cache-pin-token` | - | 快取 PIN 授權權限，避免短時間內多次驗證時反覆彈出輸入視窗，卡片類型必帶，否則無法用實體晶片讀卡機用於電腦。 |
 | `--protect-against-reset` | - | 啟用防誤重置機制，要求跨越兩次重新供電插拔才能重置，防止背景程式誤清空卡片。 |
 
