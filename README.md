@@ -41,7 +41,7 @@ python get_install_parameters.py \
 | `--max-rk-rp-length` | `128` | 將網站識別碼（RP ID）最大長度由預設 32 擴增至 128 位元組，避免登入長網域（如 Azure / Entra ID 租用戶子網域）時截斷或溢位。 |
 | `--max-cred-blob-len` | `128` | 將每個憑證附加的 Blob 資料上限由 32 提高至 128 位元組，相容更多擴充資料。 |
 | `--large-blob-store-size` | `2048` | 將 Large Blob 空間由 1024 調大至 2048 位元組，提供充裕的延伸功能儲存空間。 |
-| `--cache-pin-token` | - | 快取 PIN 授權權限，避免短時間內多次驗證時反覆彈出輸入視窗。 |
+| `--cache-pin-token` | - | 快取 PIN 授權權限，避免短時間內多次驗證時反覆彈出輸入視窗，卡片類型必帶，否則無法用實體晶片讀卡機用於電腦。 |
 | `--protect-against-reset` | - | 啟用防誤重置機制，要求跨越兩次重新供電插拔才能重置，防止背景程式誤清空卡片。 |
 
 ---
